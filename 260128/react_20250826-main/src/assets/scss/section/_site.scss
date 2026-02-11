@@ -1,0 +1,102 @@
+#site{
+
+    .site_inner{
+        padding: 16px;
+
+        .site_title{
+            position: sticky;
+            top: 70px;
+            left: 0;
+            width: 70%;
+            height: auto;
+            font-size: 4vw;
+            font-weight: 700;
+            border-bottom: 0.4vw solid var(--black100);
+            margin-bottom: 100px;
+            em{
+                font-size: 1.25rem;
+                font-weight: bold;
+            }
+        }
+        .site_wrap{
+
+            .site_item{
+                height: 70vh;
+                @include flex-center;
+                flex-direction: column;
+                text-align: center;
+                position: sticky;
+                left: 0;
+
+                &.s1{
+                    background-color: var(--subBg100);
+                    top: 180px;
+                }
+                &.s2{
+                    background-color: var(--subBg200);
+                    top: 200px;
+                }
+                &.s3{
+                    background-color: var(--subBg300);
+                    top: 220px;
+                }
+                &.s4{
+                    background-color: var(--subBg400);
+                    top: 240px;
+                }
+                &.s5{
+                    background-color: var(--subBg500);
+                    top: 260px;
+                }
+
+                .num{
+                    position: absolute;
+                    top: 1vw;
+                    left: 1vw;
+                    font-size: 5vw;
+                }
+                .text{
+                    margin-bottom: 1rem;
+
+                    >div{
+                        font-size: 3vw;
+                        line-height: 1;
+                        text-transform: uppercase;
+                        font-weight: 700;
+                        text-decoration: underline;
+                    }
+                }
+                .title{
+                    font-family: var(--mainEng-font);
+                    font-weight: 500;
+                }
+                .btn{
+
+                    >a{
+                        text-decoration: underline;
+                        margin: 0 3px;
+                        font-size: 1.1rem;
+                        transition: 0.3s;
+
+                        &:hover{
+                            color: rgb(143, 72, 72);
+                        }
+                    }
+                }
+                .infor{
+                    position: absolute;
+                    bottom: 3%;
+                    left: 1%;
+                    width: 98%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-top: 1px solid var(--black100);
+                    border-bottom: 1px solid var(--black100);
+                    padding: 3px 0;
+                    >span{}
+                }
+            }
+        }
+    }
+}

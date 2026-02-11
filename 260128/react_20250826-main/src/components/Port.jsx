@@ -1,0 +1,153 @@
+import React, { useEffect, useRef } from 'react'
+import Port1 from "../assets/img/port_1.png";
+import Port2 from "../assets/img/port_2.png";
+import Port3 from "../assets/img/port_3.png";
+import Port4 from "../assets/img/port_4.png";
+import Port5 from "../assets/img/port_5.png";
+import Port6 from "../assets/img/port_6.png";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// 리액트는 gsap npm 에서 복붙해옴
+
+const portText = [
+    {
+        num : "01.",
+        title : "A팀 프로젝트",
+        desc : "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptates consequuntur accusamus exercitationem dolorem deleniti!",
+        img : Port1,
+        img_code : "/",
+        alt : "포폴이미지1",
+        site_code: "/",
+    },
+    {
+        num : "02.",
+        title : "B팀 프로젝트",
+        desc : "2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptates consequuntur accusamus exercitationem dolorem deleniti!",
+        img : Port2,
+        img_code : "/",
+        alt : "포폴이미지2",
+        site_code: "/",
+    },
+    {
+        num : "03.",
+        title : "C팀 프로젝트",
+        desc : "3. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptates consequuntur accusamus exercitationem dolorem deleniti!",
+        img : Port3,
+        img_code : "/",
+        alt : "포폴이미지3",
+        site_code: "/",
+    },
+    {
+        num : "04.",
+        title : "D팀 프로젝트",
+        desc : "4. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptates consequuntur accusamus exercitationem dolorem deleniti!",
+        img : Port4,
+        img_code : "/",
+        alt : "포폴이미지4",
+        site_code: "/",
+    },
+    {
+        num : "05.",
+        title : "E팀 프로젝트",
+        desc : "1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptates consequuntur accusamus exercitationem dolorem deleniti!",
+        img : Port5,
+        img_code : "/",
+        alt : "포폴이미지5",
+        site_code: "/",
+    },
+    {
+        num : "06.",
+        title : "F팀 프로젝트",
+        desc : "6. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste voluptates consequuntur accusamus exercitationem dolorem deleniti!",
+        img : Port6,
+        img_code : "/",
+        alt : "포폴이미지6",
+        site_code: "/",
+    },
+]
+
+const Port = () => {
+
+    const hRef = useRef(null);
+    // useRef : 변수값을 초기화 시켜주는 훅 명령어
+    // hRef 라는 변수를 null값으로 초기화 시켜준 것
+    //이 변수는 가로 스크롤이 작용될 부모요소를 참조할때 사용하기 위해 지정
+    // ref 어떤 변수를 참조할때 사용하는 명령어
+
+    const secRef=useRef([]);
+    // useRef([]) : 변수의 초기값을 비어있는 배열로 지정
+    // 가로스크롤하는 article 0~5개를 지정하기 위해 사용
+
+    useEffect(()=>{
+        gsap.registerPlugin(ScrollTrigger);
+
+        // current : useRef 객체의 프로퍼티 속성으로 실제로 참조하고 있는 값을 나타냄 (this)
+        const horizontal = hRef.current;
+        const sections = secRef.current;
+
+        let scrollT = gsap.to(sections, {
+            xPercent : -600,    // 왼쪽을 600% 이동
+            ease: "none", // 속도를 일정하게 유지 
+            scrollTrigger:{
+                trigger: horizontal,
+                start: "top -200px",
+                end:"+=3000",
+                pin: true,
+                scrub: 1,
+            },
+        })
+
+        return()=>{
+            scrollT.kill();
+            // 다른 컴퍼넌트로 갔을 때 삭제해주는 이벤트
+        }
+
+    },[]);
+
+    // useEffect(()=>{}) : 이벤트를 줄 때 사용하는 효과 훅명령어
+    // 컴퍼넌트가 화면에 나타날 때 어떤 효과를 줄 때 사용하는 훅명령어
+
+    // useEffect(()=>{})    랜더링 될 때마다 실행되는 명령어
+    // useEffect(()=>{},[]);    화면에 첫 랜더링 될 때 한번만 실행
+    // useEffect(()=>{},[count]);   count 값이 변할 때마다 효과가 나타남
+
+    return (
+        <section id='port' ref={hRef}>
+            <div className="port_inner">
+                <div className="port_title">
+                    portfolio <em>작업물</em>
+                </div>
+                <div className="port_wrap">
+                    {portText.map((port,key)=>(
+                        // 배경색 바꾸는 작업 {`port_item p${key+1}`} 
+                        <article 
+                        className={`port_item p${key+1}`} 
+                        key={key}
+
+                        // gsap 대입
+                        ref={(el) => (secRef.current[key] = el)}
+                        
+                        >
+                        {/* 또는 0{key+1}.  (단순한 숫자 증가는 키값으로 주는 게 더 편함) */}
+                        <span className='num'>{port.num}</span>
+                        <a href={port.img_code} className='img'>
+                            <img src={port.img} alt={port.alt} />
+                        </a>
+                        <h3 className='title'>{port.title}</h3>
+                        <div className="desc">
+                            {port.desc}
+                        </div>
+                        <a href={port.site_code} className='site' rel='noreferrer noopener'>사이트 보기</a>
+                        {/* noreferrer : 정보 보안용 -> 사용자가 링크를 클릭했을 때 어디서 왔는지 정보가 전달되게 해주는 경로를 숨겨줌 */}
+                        {/* noopener : 보안용 -> 차단, 해킹, 피싱 등을 방지해줌 */}
+                        </article>
+                    ))}
+                    
+                </div>
+            </div>
+        </section>
+    )
+}
+
+export default Port

@@ -1,0 +1,100 @@
+#port{
+
+    .port_inner{
+        width: 100%;
+        margin-top: 30vh;
+        padding: 16px;
+
+        .port_title{
+            height: auto;
+            font-size: 4vw;
+            font-weight: 700;
+            text-transform: capitalize;
+            border-bottom: 0.4vw solid var(--black100);
+            margin-bottom: 16px;
+
+            em{
+                font-size: 1.8rem;
+                font-weight: 500;
+            }
+        }
+        .port_wrap{
+            width: 4000px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            height: 70vh;
+            .port_item{
+                width: 500px;
+                padding: 2.5rem;
+
+                &.p1{
+                    background-color: var(--subBg100);
+                }
+                &.p2{
+                    background-color: var(--subBg200);
+                }
+                &.p3{
+                    background-color: var(--subBg300);
+                }
+                &.p4{
+                    background-color: var(--subBg400);
+                }
+                &.p5{
+                    background-color: var(--subBg500);
+                }
+                &.p6{
+                    background-color: var(--subBg100);
+                }
+
+
+                .num{
+                    font-size: 32px;
+                    font-weight: 600;
+                }
+                .img{
+                    display: block;
+                    margin-top: -20px;
+                    transition: 0.3s;
+                    
+                    img{
+                        filter: saturate(0);
+                        border-radius: 5px;
+                        transition: 0.5s;
+                    }
+                    &:hover{
+                        margin-top: 0;
+                    }
+                    &:hover img{
+                        filter: saturate(100%);
+                    }
+                }
+                .title{
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    padding: 12px 0;
+                    border-bottom: 2px solid var(--black100);
+                    text-align: center;
+                }
+                .desc{
+                    text-align: justify;
+                    padding: 1rem 0;
+                }
+                .site{
+                    border: 1px solid var(--black100);
+                    display: block;
+                    text-align: center;
+                    margin-top: 20px;
+                    padding: 12px 0;
+                    transition: 0.4s;
+
+                    &:hover{
+                        background-color: rgba(0,0,0,0.4);
+                        color: #fff;
+                    }
+                }
+            }
+            
+        }
+    }
+}
