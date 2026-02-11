@@ -1,0 +1,18 @@
+#skip{
+
+    a{
+        position: absolute;
+        top: -100px;
+        left: 10px;
+        background-color: var(--black);
+        color: var(--white);
+        padding: 10px 30px;
+
+        &:focus{
+            top: 10px;
+        }
+    }
+}
+
+// 자식들을 괄호 안에 넣어준다 (css의 #skip > a 의 구조) 
+// & : 자기 자신
