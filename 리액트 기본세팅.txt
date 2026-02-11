@@ -1,0 +1,216 @@
+https://nodejs.org/ko/download 
+20.20.0(LTS) 다운
+
+비쥬얼스튜디오코드에서 ES7 설치
+
+터미널 켜기 (ctrl + j)
+
+npm -v
+npx - v   로 설치 잘 됐나 확인
+
+
+앱 만들기 명령어
+npm install -g create-react-app
+npx create-react-app react2026
+
+cd react2026 뜨면 복붙하고 엔터
+npm start 복붙하고 엔터
+
+파란 꽃모양 홈페이지 뜨면 세팅 완료 
+
+
+
+
+
+node_modules 빼고 압축하면 용량 줄어듦 
+
+
+public 폴더 인덱스 파일 제외 다 지우기
+
+src 폴더 App.js  index.js 제외 다 지우기
+
+
+
+index.js 들어가서 
+
+1. import './index.css'; 
+2. import reportWebVitals from './reportWebVitals';
+
+
+3.
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+지우기
+
+
+
+App.js 들어가서 
+
+1. import './App.css';
+2. import logo from './logo.svg';
+
+3. header태그 전부 지우기
+
+
+
+
+
+
+시작
+
+App.jss에서
+rafce 치면 세팅 완료
+
+
+다시 터미널 켜서
+crtl + c 누르면 일괄 작업을 끝내시겠습니까? 에 y 치고 엔터
+npm install react-router-dom 치고 엔터
+npm install sass 치고 엔터
+npm i 치고 엔터
+npm install gsap 치고 엔터 ( 기본세팅에 gsap 없어서 설치 )
+
+src에 폴더 만들기 ( 폴더명은 자유 )
+1. components
+2. assets
+3. view
+
+view 폴더에 파일
+HomeView.jsx ( 첫글자 무조건 대문자!!!!!!!!!!!!!!!! ) 
+거기에도 rafce 쳐서 세팅
+
+
+App.js 들어가서 링크 걸어주기 import React from 'react'; 아래에
+import {} from 'react-router-dom';  
+
+const 안에 div 없애고 ( * <B 부터 쳐야 자동완성 가능(괄호부터쳐야함) )
+1. <BrowserRouter></BrowserRouter>  
+2. 그 안에 <Routes></Routes>
+3. 그 안에 <Route /> 그 안에 <Route path='/' element={<HomeView />} /> 
+* HomeView 는 Home까지만 치고 엔터 
+
+다시 터미널 켜서 npm start 치기 그러면 Go Live 화면 켜짐  
+
+
+
+서브페이지 만들고싶으면
+view 창에 새 폴더 Sub.jsx 만들고 rafce 쳐서 세팅
+
+다시 App.js가서 
+<Route path='/' element={<HomeView />} /> 아래에 복붙해서
+<Route path='/Sub' element={<Sub />} /> 이 줄 추가
+
+기본링크에 /Sub 추가하면 페이지 켜짐
+ex) http://localhost:3000/Sub
+
+
+
+
+components 폴더에
+
+Header.jsx 파일 만들기 ( 무조건 대문자 !!!!!!!!!!!!!!!!!!!@@ )
+rafce 치고 세팅
+
+Main.jsx 파일 만들기 ( 무조건 대문자 !!!!!!!!!!!!!!!!!!!@@ )
+rafce 치고 세팅
+
+Footer.jsx 파일 만들기 ( 무조건 대문자 !!!!!!!!!!!!!!!!!!!@@ )
+rafce 치고 세팅
+
+이런식으로 
+Contact, Intro, Port, Site, Skill, Skip 폴더 만들기
+
+
+다 만들었으면 HomeView.jsx 다시 들어가서
+div 지우고 <> </> 이렇게만 만들기 (Sub 만들었으면 거기도)
+그 안에 <Sk 까지만 치고 엔터치고 한칸 띄워서 <Skip /> 만들기 
+그런식으로 <Header /> 만들기 *******Headers 아님 
+
+<Skip />
+<Header />
+<Main></Main>
+<Footer />
+
+이렇게 만들고 Main 안에
+
+
+
+Main 파일 들어가서 자식 영역 설정해주기
+
+const Main = ({children}) => {
+    return (
+        <main id="main" role='main'>
+            {children}
+        </main>
+    )
+}
+
+
+
+assets에다가 img, scss 폴더 복붙함(카톡에서 파일 다운)
+scss 폴더에   _style.scss 파일 만들기 ( 언더바 안써도되는데 나중에 구분을 위해 써줌 ) 여기다가
+
+//setting
+@import "./setting/resct";
+@import "./setting/vars";
+@import "./setting/font";
+@import "./setting/mixin"
+
+//section
+
+링크 걸어두기 
+
+
+
+index.js 에 가서 import "./assets/scss/_style.scss" 링크 걸기 
+
+
+
+
+인덱스 기본 세팅
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>리액트 초기화</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+
+
+
+
+
+
+
+******** 집에 가져가려면(용량정리)
+
+node 모듈 폴더 지우고
+비쥬얼스튜디오 코드 다시 켜서 모듈 폴더 지운 초기화 폴더 가지고 온 후 터미널 켜기
+치고 npm i 엔터 > npm start 엔터
+
+그 후에 깃허브에 올려서 가져가면 됨 
+
+다운받고 노드모듈 재설치법 
+npm -v
+npm -i 
+npm start 
+
+
+
+
+
+
+
+
+
+
+
+
+
