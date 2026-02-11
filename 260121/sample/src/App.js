@@ -1,0 +1,12 @@
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+        이제부터 머리가 아플겁니다
+    </div>
+  );
+}
+
+export default App;
